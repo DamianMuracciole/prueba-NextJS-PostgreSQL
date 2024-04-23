@@ -1,0 +1,90 @@
+.fondo {
+  padding: 1rem;
+  padding-top: 6rem;
+  background-color: rgba(75, 67, 57, 0.699);
+  min-height: 70vh;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+/* .productsContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+} */
+
+.card{
+  text-decoration: none;
+  width:30vw;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 1rem;
+  margin: .5rem;
+  text-align: center;
+  border: 1px solid beige;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content:center;
+  align-items: center;  
+}
+
+.productTitle{
+  margin: 1rem 0;
+  font-size: 1.8rem;
+}
+
+.descriptionTitle,
+.priceTitle{
+  margin: .8rem .1rem;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.productTitle,
+.descriptionTitle,
+.priceTitle{
+  color:beige;
+  text-decoration: dashed;
+}
+
+.imageProduct{
+  border-radius: 5px;
+  margin: .5rem 0 1rem;
+  width: auto;
+  max-width: 25vw;
+}
+
+.buttonsContainer{
+  margin: 1rem;
+  display:flex;
+}
+
+.submitbutton {
+  padding: .5rem 1.5rem;
+  margin: .5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 2rem;
+  cursor:pointer
+}
+
+.submitbutton:hover{
+  background-color: rgb(109, 32, 182);
+}
+
+
+
+
+

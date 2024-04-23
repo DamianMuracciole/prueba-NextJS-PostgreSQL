@@ -1,0 +1,78 @@
+.fondo {
+  padding: 1rem;
+  padding-top: 6rem;
+  background-color: rgba(75, 67, 57, 0.699);
+  min-height: 70vh;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.formulario {
+  width: 300px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario>label {
+  padding-top: 2rem;
+  font-size: 1.2rem;
+  color: rgb(235, 214, 255);
+}
+
+.formulario>input {
+  margin: 0.5rem 0 .25rem 0;
+  color: blueviolet;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  width: 300px;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+}
+
+.formulario>div {
+  padding: 1.5rem 0;
+
+}
+
+.submitbutton {
+  text-decoration: none;
+  padding: .5rem 1.5rem;
+  margin: .5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer
+}
+
+.submitbutton:hover {
+  background-color: rgb(109, 32, 182);
+}
+
+.formulario>p {
+  color: rgb(209, 51, 23);
+  background-color: rgba(187, 187, 187, 0.24);
+  width: 100%;
+  padding: 2px;
+  margin: .5rem 0;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.imageProduct {
+  margin-top: 1rem;
+  border-radius: 10px;
+}

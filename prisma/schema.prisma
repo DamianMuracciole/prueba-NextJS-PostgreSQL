@@ -1,0 +1,36 @@
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id         Int      @id @default(autoincrement())
+  firstname  String   @db.VarChar(100)
+  lastname   String   @db.VarChar(100)
+  username   String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(45)
+  company    String   @db.VarChar(45)
+  password   String   @db.VarChar(200)
+  avatar     String   @db.VarChar(200)
+  newsletter Boolean
+  createdAt  DateTime @default(now())
+  updateAt   DateTime @updatedAt
+}
+
+model Products {
+  id                Int      @id @default(autoincrement())
+  name              String   @db.VarChar(100)
+  description       String   @db.VarChar(250)
+  hiddendescription Boolean
+  price             Decimal  @db.Decimal(16, 2)
+  hiddenprice       Boolean
+  hiddenproduct     Boolean
+  urlImage          String   @db.VarChar(200)
+  createdAt         DateTime @default(now())
+}

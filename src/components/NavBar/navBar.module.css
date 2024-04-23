@@ -1,0 +1,60 @@
+.container {
+  background-color:#faf2d688;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container>div,
+.container>div>ul{
+  margin: 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container>div>ul>li,
+.container>div {
+  padding: 0rem 2rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+.link {
+  text-decoration: none;
+  color: #54167d;
+}
+
+.mgn {
+  margin: 0 .5rem;
+}
+
+.logoUser{
+  height: 1rem;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoUser>span{
+  padding-left: .5rem;
+  color: #54167d;
+}
+
+.logout{
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  font: inherit;
+  color: #54167d;
+  cursor: pointer;
+}

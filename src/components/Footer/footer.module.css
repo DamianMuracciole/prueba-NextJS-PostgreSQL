@@ -1,0 +1,74 @@
+.G {
+  color: #54167d;
+  color: #a153ca;
+  color: #fecffa;
+  color: #262422;
+  color: #fedafe;
+  color: #faf2d6;
+  color: #08000e;
+}
+
+
+.container {
+  background-color: #54167d;
+  width: 100%;
+  height: auto;
+  padding: 2rem 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.marcaContainer{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.brandText{
+  font-size: 1.5rem;
+  margin: 2rem;
+  color:#faf2d6;
+  text-decoration: none;
+}
+.logosContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: #faf2d6;
+  padding-left: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: .8rem;
+}
+
+.logoContainer {
+  padding: .5rem 2rem;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+@media(min-width: 576px) {
+  .logoContainer {
+    width: 50vw;
+  }
+}
+
+@media(min-width: 992px) {
+  .logoContainer {
+    width: 30vw;
+  }
+}
