@@ -1,12 +1,15 @@
 'use client'
 import { useState, useEffect } from 'react';
+import { config } from 'dotenv'
 import Link from 'next/link';
 import styles from '@/app/auth/products/styles.module.css';
 import Image from 'next/image';
 
+config();
 
 export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
+  let url = process.env.NEXT_PUBLIC_URL  + "/api/products";
 
   useEffect(() => {
     fetch('http://localhost:3000/api/products')

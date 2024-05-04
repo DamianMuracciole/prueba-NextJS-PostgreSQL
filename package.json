@@ -10,11 +10,14 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^5.13.0",
     "@prisma/client": "^5.13.0",
     "@vercel/postgres": "^0.8.0",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "next": "14.0.2",
     "next-auth": "^4.24.5",
+    "pg": "^8.11.5",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",

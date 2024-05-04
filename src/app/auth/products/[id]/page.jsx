@@ -14,7 +14,7 @@ export default function UserRegister({ params }) {
     fetch(`http://localhost:3000/api/products/${id}`)
       .then(response => response.json())
       .then(product => setProduct(product))
-  }, [])
+  }, [id])
 
   const router = useRouter();
 
