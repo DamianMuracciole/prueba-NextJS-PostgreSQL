@@ -11,11 +11,11 @@ export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
   let url = process.env.NEXT_PUBLIC_URL  + "/api/products";
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/products')
-      .then(response => response.json())
-      .then(products => setProducts(products.data))
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/api/products')
+  //     .then(response => response.json())
+  //     .then(products => setProducts(products.data))
+  // }, [])
 
   return (
     <article className={styles.fondo} >
@@ -24,7 +24,7 @@ export default function UserRegister(props) {
 
       <section className={styles.productsContainer} >
 
-        {products.length > 0 &&
+        {/* {products.length > 0 &&
           products.map((el) =>
             <Link href={`/auth/products/${el.id}`} key={el.id} className={styles.card} >
               <h2 className={styles.productTitle} >{el.name}</h2>
@@ -39,7 +39,7 @@ export default function UserRegister(props) {
               {!el.hiddendescription && <p className={styles.priceTitle} >$ {el.price}</p>}
             </Link>
           )
-        }
+        } */}
         {products.length == 0 &&
           products.length == 0 && <h3>Cargando ...</h3>
         }
