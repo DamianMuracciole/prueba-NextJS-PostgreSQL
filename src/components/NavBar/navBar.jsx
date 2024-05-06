@@ -9,8 +9,7 @@ export default async function NavBar() {
   const logoSize = 24;
   const session = await getServerSession(authOptions);
   let urlImage = session.user.image
-  console.log(urlImage.toString().trim().length)
-
+  
   return (
     <nav className={styles.container}>
       <div>

@@ -9,7 +9,7 @@ config();
 
 export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
-  
+
   const urlHost = location.origin
   let url = urlHost + "/api/products";
 
@@ -33,7 +33,7 @@ export default function UserRegister(props) {
             >
               <h2 className={styles.productTitle}>{el.name}</h2>
               <Image
-                src={el.urlImage}
+                src={el.urlImage.toString().trim()}
                 width={180}
                 height={180}
                 alt="Imagen del producto"
