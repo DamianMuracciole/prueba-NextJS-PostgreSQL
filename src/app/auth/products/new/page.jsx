@@ -28,8 +28,10 @@ export default function UserRegister() {
     formData.append("hiddenprice", data.hiddenprice);
     formData.append("hiddenproduct", data.hiddenproduct);
     formData.append("urlImage", file)
-    //console.log(formData)
 
+    const urlHost = location.origin
+    let url = urlHost + "/api/products";
+  
 
     const res = await fetch('/api/products', {
       method: 'POST',

@@ -10,8 +10,12 @@ import styles from '@/app/auth/products/[id]/styles.module.css';
 export default function UserRegister({ params }) {
   const [product, setProduct] = useState({});
   const id = params.id;
+  const urlHost = location.origin
+  let url = urlHost + "/api/products/";
+
+
   useEffect(() => {
-    fetch(`http://localhost:3000/api/products/${id}`)
+    fetch(`${url} ${id}`)
       .then(response => response.json())
       .then(product => setProduct(product))
   }, [id])
