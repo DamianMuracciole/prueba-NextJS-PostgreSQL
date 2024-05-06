@@ -9,10 +9,12 @@ config();
 
 export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
-  let url = process.env.NEXT_PUBLIC_URL + "/api/products";
+  
+  const urlHost = location.origin
+  let url = urlHost + "/api/products";
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products")
+    fetch(url)
       .then((response) => response.json())
       .then((products) => setProducts(products.data));
   }, []);
