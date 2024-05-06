@@ -149,7 +149,7 @@ export default function UserRegister() {
           <label htmlFor='urlImage' className={styles.contentImageProduct}>
             <p>Imagen del producto</p>
             <Image
-              src={file ? URL.createObjectURL(file) : product.urlImage}
+              src={file ? URL.createObjectURL(file) : product.urlImage.toString().trim()}
               width={180}
               height={180}
               alt='producto'
