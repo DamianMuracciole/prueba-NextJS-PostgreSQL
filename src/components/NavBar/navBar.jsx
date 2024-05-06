@@ -9,7 +9,7 @@ export default async function NavBar() {
   const logoSize = 24;
   const session = await getServerSession(authOptions);
   let urlImage = session.user.image
-
+  
   return (
     <nav className={styles.container}>
       <div>
@@ -24,7 +24,7 @@ export default async function NavBar() {
               <li className={styles.logoUser}>
                 <Link href={`/auth/user`} className={styles.link}>
                   < Image
-                    src={urlImage.toString()}
+                    src={urlImage.toString().trim()}
                     width={logoSize}
                     height={logoSize}
                     alt='logo'

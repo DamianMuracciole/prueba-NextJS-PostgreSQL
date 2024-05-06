@@ -72,7 +72,7 @@ export default function UserRegister({ params }) {
             <p className={styles.priceTitle}>$ {product.price}</p>
             <h4 className={styles.descriptionTitle}>{product.description}</h4>
             <Image
-              src={product.urlImage}
+              src={product.urlImage.toString().trim()}
               width={180}
               height={180}
               alt='Imagen del producto'
