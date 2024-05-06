@@ -284,7 +284,7 @@ export default function UserRegister() {
 
               <label htmlFor='avatar' >Avatar</label>
               <Image
-                src={file ? URL.createObjectURL(file) : user.avatar}
+                src={file ? URL.createObjectURL(file) : user.avatar.toString().trim()}
                 width={180}
                 height={180}
                 alt='avatar'
