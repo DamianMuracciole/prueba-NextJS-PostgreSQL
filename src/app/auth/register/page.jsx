@@ -184,15 +184,6 @@ export default function UserRegister() {
         />
         {errors.repassword && <p>{errors.repassword.message}</p>}
 
-        {/* <Image
-          src='/images/avatar.jpg'
-          width={100}
-          height={100}
-          alt='avatar'
-          className={styles.avatar} />
-        <label htmlFor='avatar' >Tu avatar</label>
-        <input type="file" {...register('avatar')} /> */}
-
         <label htmlFor='urlImage' >Avatar</label>
         <Image
           src={file ? URL.createObjectURL(file) : '/images/avatar.jpg'}

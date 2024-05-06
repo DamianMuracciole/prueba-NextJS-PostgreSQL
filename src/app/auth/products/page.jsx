@@ -17,7 +17,7 @@ export default function UserRegister(props) {
     fetch(url)
       .then((response) => response.json())
       .then((products) => setProducts(products.data));
-  }, []);
+  }, [url]);
 
   return (
     <article className={styles.fondo}>

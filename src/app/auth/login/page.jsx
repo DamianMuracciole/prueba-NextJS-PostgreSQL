@@ -4,7 +4,6 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '@/app/auth/login/styles.module.css';
-//import Image from 'next/image'
 
 
 export default function UserLogin() {
