@@ -31,9 +31,10 @@ export default function UserRegister() {
     formData.append("password", data.password);
     formData.append("avatar", file);
     formData.append("newsletter", data.newsletter);
-    //console.log(formData)
+    const urlHost = location.origin
+    let url = urlHost + '/api/auth/register';
 
-    const res = await fetch('/api/auth/register', {
+    const res = await fetch(url, {
       method: 'POST',
       body: formData
     })

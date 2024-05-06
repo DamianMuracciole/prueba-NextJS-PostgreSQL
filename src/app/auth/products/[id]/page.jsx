@@ -18,7 +18,7 @@ export default function UserRegister({ params }) {
     fetch(`${url} ${id}`)
       .then(response => response.json())
       .then(product => setProduct(product))
-  }, [id])
+  }, [id,url])
 
   const router = useRouter();
 
@@ -36,7 +36,7 @@ export default function UserRegister({ params }) {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+          const res = await fetch(`${url} ${id}`, {
             method: "DELETE",
             headers: {
               "Content-type": "application/json",

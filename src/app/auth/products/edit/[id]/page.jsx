@@ -14,6 +14,8 @@ export default function UserRegister() {
   const [file, setFile] = useState();
   const [product, setProduct] = useState({});
   const id = params.id;
+  const urlHost = location.origin
+  let url = urlHost + "/api/products/";
 
   const {
     register,
@@ -21,7 +23,7 @@ export default function UserRegister() {
     formState: { errors }
   } = useForm({
     defaultValues: async () => {
-      const response = await fetch(`http://localhost:3000/api/products/${id}`);
+      const response = await fetch(`${url} ${id}`);
       const productSelected = await response.json();
       setProduct(productSelected)
       return productSelected;
@@ -40,12 +42,10 @@ export default function UserRegister() {
     if (file) formData.append("urlImage", file)
     else formData.append("urlImage", data.urlImage)
 
-    const res = await fetch(`/api/products/${id}`, {
+    const res = await fetch(`${url} ${id}`, {
       method: 'PUT',
       body: formData
     })
-    //const resJSON = await res.json();
-    //console.log(resJSON)
 
     if (res.ok) {
       router.push('/auth/products')

@@ -10,13 +10,14 @@ import styles from '@/app/auth/user/styles.module.css';
 
 
 export default function UserRegister() {
-  const host = 'http://localhost:3000/';
   const [user, setUser] = useState({});
   const [editUser, setEditUser] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [file, setFile] = useState();
   const [errorsPasswordStatus, setErrorsPasswordStatus] = useState(false)
   const errorsPasswordmessage = "Contraseña no válida"
+  const urlHost = location.origin
+  let url = urlHost + '/api/auth/user';
 
   const {
     register,
@@ -25,7 +26,7 @@ export default function UserRegister() {
     formState: { errors }
   } = useForm({
     defaultValues: async () => {
-      const response = await fetch(host + '/api/auth/user')
+      const response = await fetch(url)
       const usersSelected = await response.json();
       setUser(usersSelected)
       return usersSelected;
@@ -71,7 +72,7 @@ export default function UserRegister() {
             showConfirmButton: false
           })
 
-          const res = await fetch('/api/auth/user', {
+          const res = await fetch(url , {
             method: 'PUT',
             body: formData
           });
