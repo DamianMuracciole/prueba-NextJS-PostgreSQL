@@ -11,11 +11,11 @@ export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
   let url = process.env.NEXT_PUBLIC_URL  + "/api/products";
 
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/api/products')
-  //     .then(response => response.json())
-  //     .then(products => setProducts(products.data))
-  // }, [])
+  useEffect(() => {
+    fetch('http://localhost:3000/api/products')
+      .then(response => response.json())
+      .then(products => setProducts(products.data))
+  }, [])
 
   return (
     <article className={styles.fondo} >
