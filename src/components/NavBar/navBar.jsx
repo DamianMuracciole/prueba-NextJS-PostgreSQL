@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Images from 'next/image';
+import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import Logout from '@/components/logout'
@@ -22,7 +22,7 @@ export default async function NavBar() {
               <li><Link href='/auth/products' className={styles.link}>Products</Link></li>
               <li className={styles.logoUser}>
                 <Link href={`/auth/user`} className={styles.link}>
-                  <Images
+                  < Image
                     src={session.user.image}
                     width={logoSize}
                     height={logoSize}
