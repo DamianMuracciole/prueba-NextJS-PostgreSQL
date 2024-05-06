@@ -8,6 +8,8 @@ import styles from '@/components/NavBar/navBar.module.css'
 export default async function NavBar() {
   const logoSize = 24;
   const session = await getServerSession(authOptions);
+  let urlImage = session.user.image
+  console.log(urlImage.toString().trim().length)
 
   return (
     <nav className={styles.container}>
@@ -23,7 +25,7 @@ export default async function NavBar() {
               <li className={styles.logoUser}>
                 <Link href={`/auth/user`} className={styles.link}>
                   < Image
-                    src={session.user.image}
+                    src={urlImage.toString().trim()}
                     width={logoSize}
                     height={logoSize}
                     alt='logo'
