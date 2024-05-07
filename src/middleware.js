@@ -1,11 +1,13 @@
 export { default } from "next-auth/middleware";
 
+console.log('pasaste por middlwware')
+
 export const config = {
   matcher: [
     // "/api/auth/:path*",
     // "/api/products/:path*",
     // "/auth/logout",
-    "/auth/products/:path*",
+    // "/auth/products/:path*",
     // "/auth/user",
   ],
 };

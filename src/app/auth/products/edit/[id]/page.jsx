@@ -14,7 +14,7 @@ export default function UserRegister() {
   const [file, setFile] = useState();
   const [product, setProduct] = useState({});
   const id = params.id;
-  const urlHost = location.origin
+  const urlHost = window.location.origin
   let url = urlHost + "/api/products/";
 
   const {

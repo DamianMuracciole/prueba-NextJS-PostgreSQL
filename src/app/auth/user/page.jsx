@@ -16,7 +16,7 @@ export default function UserRegister() {
   const [file, setFile] = useState();
   const [errorsPasswordStatus, setErrorsPasswordStatus] = useState(false)
   const errorsPasswordmessage = "Contraseña no válida"
-  const urlHost = location.origin
+  const urlHost = window.location.origin
   let url = urlHost + '/api/auth/user';
 
   const {

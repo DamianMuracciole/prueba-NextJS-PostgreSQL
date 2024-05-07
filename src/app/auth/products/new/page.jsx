@@ -29,7 +29,7 @@ export default function UserRegister() {
     formData.append("hiddenproduct", data.hiddenproduct);
     formData.append("urlImage", file)
 
-    const urlHost = location.origin
+    const urlHost = window.location.origin
     let url = urlHost + "/api/products";
   
 

@@ -10,7 +10,7 @@ import styles from '@/app/auth/products/[id]/styles.module.css';
 export default function UserRegister({ params }) {
   const [product, setProduct] = useState({});
   const id = params.id;
-  const urlHost = location.origin
+  const urlHost = window.location.origin
   let url = urlHost + "/api/products/";
 
 

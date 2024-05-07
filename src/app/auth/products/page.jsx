@@ -9,8 +9,8 @@ config();
 
 export default function UserRegister(props) {
   const [products, setProducts] = useState([]);
-
-  const urlHost = location.origin;
+  // console.log(window.location.origin)
+  const urlHost = window.location.origin;
   let url = urlHost + "/api/products";
 
   useEffect(() => {
