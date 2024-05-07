@@ -35,11 +35,11 @@ export const authOptions = {
   pages: {
     signIn: '/auth/login',
   },
-  session: {
-    jwt: true,
-    // maxAge está en segundos
-    maxAge: 24 * 60 * 60, // 1 día
-  }
+  // session: {
+  //   jwt: true,
+  //   // maxAge está en segundos
+  //   maxAge: 24 * 60 * 60, // 1 día
+  // }
 }
 
 const handler = NextAuth(authOptions);
