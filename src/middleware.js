@@ -5,7 +5,7 @@ export const config = {
     // "/api/auth/:path*",
     // "/api/products/:path*",
     // "/auth/logout",
-    // "/auth/products/:path*",
+    "/auth/products/:path*",
     // "/auth/user",
   ],
 };
