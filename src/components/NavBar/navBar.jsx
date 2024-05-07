@@ -10,7 +10,6 @@ export default async function NavBar() {
   const session = await getServerSession(authOptions);
   let urlImage;
   if ( session && session.user) urlImage = session.user.image;
-  console.log(urlImage)
   
   return (
     <nav className={styles.container}>

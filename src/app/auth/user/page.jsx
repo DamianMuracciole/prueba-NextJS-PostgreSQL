@@ -8,15 +8,16 @@ import Image from 'next/image';
 import Swal from 'sweetalert2';
 import styles from '@/app/auth/user/styles.module.css';
 
-
 export default function UserRegister() {
   const [user, setUser] = useState({});
   const [editUser, setEditUser] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const [file, setFile] = useState();
   const [errorsPasswordStatus, setErrorsPasswordStatus] = useState(false)
-  const errorsPasswordmessage = "Contraseña no válida"
-  const urlHost = window.location.origin
+  const errorsPasswordmessage = "Contraseña no válida";
+
+  let urlHost ;
+  (window && window.location) ? urlHost= window.location.origin :urlHost = "http://localhost:3000";
   let url = urlHost + '/api/auth/user';
 
   const {
@@ -52,8 +53,6 @@ export default function UserRegister() {
     }
     if (file) formData.append("avatar", file)
     else formData.append("avatar", data.avatar)
-
-    // console.log('formData: ', formData)
 
     Swal.fire({
       title: "Querés modificar tu usuario!",
@@ -284,7 +283,7 @@ export default function UserRegister() {
 
               <label htmlFor='avatar' >Avatar</label>
               <Image
-                src={file ? URL.createObjectURL(file) : user.avatar.toString().trim()}
+                src={file ? URL.createObjectURL(file) : user.avatar}
                 width={180}
                 height={180}
                 alt='avatar'
