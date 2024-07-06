@@ -19,6 +19,7 @@ export default async function NavBar() {
       <div>
         <ul>
           <li><Link href='/about' className={styles.link}>About</Link></li>
+          <li><Link href='/payment' className={styles.link}>Pagos</Link></li>
           {session && session.user ? (
             <>
               <li><Link href='/auth/products' className={styles.link}>Products</Link></li>

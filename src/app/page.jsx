@@ -10,6 +10,7 @@ export default async function Home() {
           width={180}
           height={180}
           alt='default image'
+          priority={true}
         />
       </div>
     </main>

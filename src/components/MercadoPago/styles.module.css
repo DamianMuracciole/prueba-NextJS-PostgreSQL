@@ -1,0 +1,17 @@
+.parrafo {
+  padding: 1rem 4rem;
+  text-align: justify;
+  letter-spacing: 1px;
+  line-height: 2rem;
+}
+
+.subtitulo {
+  padding: 1rem 4rem;
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+.mpbtn{
+  padding: 1rem;
+  width: 200px;
+}
