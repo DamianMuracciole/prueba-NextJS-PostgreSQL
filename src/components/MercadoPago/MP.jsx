@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { MercadoPagoConfig, Preference } from "mercadopago";
+import { MercadoPagoConfig } from "mercadopago";
 import styles from "./styles.module.css";
 
 const cliente = new MercadoPagoConfig({
@@ -15,7 +15,6 @@ export default function MercadoPago() {
     price: 100,
     quantity: 1,
   };
-
 
   useEffect(() => {
     initMercadoPago(process.env.NEXT_PUBLIC_KEY_MP, { locale: "es-AR" });
@@ -45,29 +44,32 @@ export default function MercadoPago() {
         method: "POST",
         body: JSON.stringify(datas),
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-      })
+      });
       // respuesta desde el back
       const { id } = await res.json();
-      if( id ) setPreferenceId(id) 
+      if (id) setPreferenceId(id);
     } catch (error) {
-      console.log('hay errores: =>  ',error);
+      console.log("hay errores: =>  ", error);
     }
   };
-  
+
   return (
     <div id="wallet_container" className={styles.mpbtn}>
-      <button onClick={() => sendData(producto)}>realizar pago por Mercadopago</button>
-      {preferenceId && 
+      {!preferenceId && (
+        <button onClick={() => sendData(producto)}>
+          realizar pago por Mercadopago
+        </button>
+      )}
+      {preferenceId && (
         <>
-        <Wallet
-          initialization={{ preferenceId: preferenceId }}
-          customization={customization}
-        />
-        <p>{preferenceId}</p>
+          <Wallet
+            initialization={{ preferenceId: preferenceId }}
+            customization={customization}
+          />
         </>
-      }
+      )}
     </div>
   );
 }

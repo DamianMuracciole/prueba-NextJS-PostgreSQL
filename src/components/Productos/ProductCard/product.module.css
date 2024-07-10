@@ -1,0 +1,142 @@
+/* --colorPink01:'#ec4e70'; 
+--colorPink02:'#f0caca';
+--colorPink03:'#f6e0e0';
+--colorViolet01:'#794dff';
+--colorViolet02:'#c7baf2';
+--colorViolet03:'#dfd7f7';
+--colorBlue01:'#00b0f0';
+--colorBlue02:'#a2d8ec';
+--colorBlue03:'#c9e9f4';
+--colorAmber01:'#e69500';
+--colorAmber02:'#e9cfa2';
+--colorAmber03:'#f2e3c9';
+--colorGren01:'#2cbc9d';
+--colorGren02:'#7dd0be';
+--colorGren03:'#ace1d6';
+--color11:'#e9f3f3'
+*/
+
+/*------ Contenedores ------*/
+
+.productContainer {
+  margin: 1rem .5rem;
+  width: 300px;
+  padding-bottom: 1rem;
+  background-color: #fff4c8;
+  border: 5px solid #ffe4ab;
+  border-radius: 10px;
+  transition: box-shadow 150ms ease-in-out,
+              transform 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.productContainer:hover{
+  box-shadow: 1px 1px 10px #9F774C88;
+  transform: scale(1.01);
+}
+
+.title{
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: #333;
+  margin: 0;
+}
+
+.productContainer>h3{
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+}
+
+.imageContainer{
+  position: relative;
+}
+
+.imageProduct{
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+}
+
+.checkedIcon{
+  position: absolute;
+  padding: 2px;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  color: #176d2e;
+  background-color: #fff4;
+  border-radius: 50%;
+}
+
+.buyContent {
+  padding: 0 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  padding: .25rem 0;
+  font-size: 1rem;
+  font-weight:bolder;
+  margin: 0;
+}
+
+.btn{
+  background-color: #DD5A1Add;
+  color: #FDEAD0;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media(min-width:576px) {
+
+  .productContainer{
+    margin: 1rem;
+  }
+
+  .title {
+    padding: 1rem .5rem;
+  }
+
+  .productContainer>h3{
+    padding: 1rem .5rem;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+}
+
+@media(min-width:768px) {
+
+  .title{
+    padding: .25rem 1rem;
+    font-stretch: expanded;
+  }
+
+  .productContainer>h3 {
+    padding: .25rem 1rem;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+}
+
+
+@media(min-width:992px) {
+  .productContainer {
+    height: auto;
+  }
+}
+
+@media(min-width:1200px) {}
+
+
+.modalWindow {
+  height: auto;
+  width: 100%;
+}

@@ -1,7 +1,6 @@
 'use client'
 import styles from '@/app/about/styles.module.css';
 
-
 export default function AboutPage() {
 
   return (

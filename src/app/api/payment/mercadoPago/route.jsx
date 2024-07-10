@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { MercadoPagoConfig , Preference } from "mercadopago";
 // Agrega credenciales
 
-export async function POST(req,res) {
+export async function POST(req) {
 
   const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN });
 

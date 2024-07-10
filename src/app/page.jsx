@@ -6,7 +6,7 @@ export default async function Home() {
       <div>
         <h1>HomePage</h1>
         <Image
-          src='/images/defaultImage.png'
+          src='/images/defaultImage-1.png'
           width={180}
           height={180}
           alt='default image'
