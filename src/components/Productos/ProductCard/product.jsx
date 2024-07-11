@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import { addItem, clearItem } from "./functions";
 
 import { BsCheck2Circle } from "react-icons/bs";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import styles from "./product.module.css";
 
-import Lienzo from './modalProduct';
-
+import ModalProduct from "./modalProduct";
 
 export default function Product({ product, list, setList }) {
   const [selected, setSelected] = useState(false);
@@ -34,35 +33,57 @@ export default function Product({ product, list, setList }) {
 
   return (
     <div className={styles.productContainer}>
-      <Lienzo data1={product}>
-        <div className={styles.imageContainer}>
-          <Image
-            src={product.image}
-            width={300}
-            height={300}
-            alt={product.title}
-            className={styles.imageProduct}
-          />
-          {selected && <BsCheck2Circle className={styles.checkedIcon} />}
+      <div>
+        <ModalProduct data1={product}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={product.image}
+              width={296}
+              height={296}
+              alt={product.title}
+              className={styles.imageProduct}
+            />
+            {selected && <BsCheck2Circle className={styles.checkedIcon} />}
+            {product.discount > 0 && (
+              <div className={styles.discountTxt}>
+                {/* <p> {product.discount * 100}%</p> */}
+                <p>En Oferta</p>
+              </div>
+            )}
+          </div>
+        </ModalProduct>
+
+        <p className={styles.title}>{product.title}</p>
+        <h3 className={styles.subtitle}>{product.description}</h3>
+      </div>
+      <div>
+        <div className={styles.buyContent}>
+          {product.discount > 0 && (
+            <div className={styles.discountPrice}>
+              <span className={styles.priceRow }> $ {product.price}</span>
+              <span className={styles.finalPrice }> ${product.price * (1-product.discount)}</span>
+            </div>
+          )}
+          {product.discount == 0 &&
+          <p className={styles.price}> $ {product.price}</p>
+          }
+          {/* <p className={styles.price} style={{ color: "tomato" }}>
+            {" "}
+            -{product.discount * 100}%
+          </p> */}
         </div>
-      </Lienzo>
-
-      <p className={styles.title}>{product.title}</p>
-      <h3>{product.description}</h3>
-
-      <div className={styles.buyContent}>
-        <p className={styles.price}> $ {product.price}</p>
-
-        {!selected && (
-          <button onClick={() => add(product)} className={styles.btn}>
-            Agregar
-          </button>
-        )}
-        {selected && (
-          <button onClick={() => borrar(product)} className={styles.btn}>
-            Quitar
-          </button>
-        )}
+        <div>
+          {!selected && (
+            <button onClick={() => add(product)} className={styles.btn}>
+              Agregar al carro
+            </button>
+          )}
+          {selected && (
+            <button onClick={() => borrar(product)} className={styles.btn}>
+              Quitar del carro
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

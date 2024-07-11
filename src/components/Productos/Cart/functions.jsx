@@ -17,10 +17,22 @@ function clearAll() {
   return [];
 }
 
-function sum(listado) {
-  let suma = 0;
-  listado.map((item) => (suma += Number(item.price)));
-  return suma;
+function subTotal(listado) {
+  let sumaTotal = 0;
+  listado.map((item) => (sumaTotal += Number(item.price)));
+  return sumaTotal;
 }
 
-export { clearItem, clearAll, sum };
+function discountTotal(listado) {
+  let sumaTotal = 0;
+  listado.map((item) => (sumaTotal += Number(item.price)* Number(item.discount)));
+  return sumaTotal;
+}
+
+function totalTaxes(listado) {
+  let sumaTotal = 0;
+  listado.map((item) => (sumaTotal += Number(item.price)* Number(item.taxes)));
+  return sumaTotal;
+}
+
+export { clearItem, clearAll, subTotal , discountTotal , totalTaxes };

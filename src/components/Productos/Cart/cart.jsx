@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { contexto } from "@/app/(contx_grp)/productos/layout";
 import Image from "next/image";
 
-import { clearItem, clearAll, sum } from "./functions";
+import { clearItem, clearAll, subTotal , discountTotal , totalTaxes } from "./functions";
 
 import { TbTrashX } from "react-icons/tb";
 import styles from "./styles.module.css";
@@ -12,7 +12,9 @@ import Swal from 'sweetalert2';
 export default function Cart() {
   const { cartList, setCartList } = useContext(contexto);
   const [subtotal, setSubtotal] = useState(0);
-  const [Total, setTotal] = useState(0);
+  const [discounts, setDiscounts] = useState(0);
+  const [taxes, setTaxes] = useState(0);
+  const [total,setTotal] = useState(0);
   const impuestos = 21;
   //Borro un item de la lista
   const borrar = (product) => setCartList(clearItem(product, cartList));
@@ -40,10 +42,15 @@ export default function Cart() {
   }); ;
 
   useEffect(() => {
-    const suma = sum(cartList);
+    const suma = subTotal(cartList);
     setSubtotal(suma);
-    setTotal(suma * (1 + impuestos / 100));
-  }, [cartList]);
+    const descuentos = discountTotal(cartList);
+    setDiscounts(descuentos)
+    const impuestos = totalTaxes(cartList);
+    setTaxes(impuestos)
+
+    setTotal(suma + impuestos - descuentos);
+  }, [cartList,discounts, impuestos]);
 
   return (
     <article className={styles.mainCart}>
@@ -52,13 +59,13 @@ export default function Cart() {
       {cartList.length !== 0 && (
         <>
           <div className={styles.cartContainer}>
-            <div>
+            <div className={styles.productsContainer}>
               {cartList.map((product, id) => (
                 <div key={id} className={styles.card}>
                   <Image
                     src={product.image}
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     alt="imagen del producto"
                     className={styles.imgProduct}
                   />
@@ -79,13 +86,17 @@ export default function Cart() {
               <h2>Subtotal</h2>
               <p> $ {subtotal}</p>
             </div>
+            <div className={styles.subtotal}>
+              <h2>Descuentos</h2>
+              <p> $ {discounts}</p>
+            </div>
             <div className={styles.impuestos}>
               <h2>Impuestos</h2>
-              <p>{impuestos} %</p>
+              <p>$ {taxes}</p>
             </div>
             <div className={styles.total}>
               <h2>Total</h2>
-              <p> $ {Total}</p>
+              <p> $ {total}</p>
             </div>
 
             <button

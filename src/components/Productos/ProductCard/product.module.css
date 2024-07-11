@@ -21,18 +21,20 @@
 .productContainer {
   margin: 1rem .5rem;
   width: 300px;
-  padding-bottom: 1rem;
   background-color: #fff4c8;
-  border: 5px solid #ffe4ab;
+  border: 1px solid #ffe4ab;
   border-radius: 10px;
   transition: box-shadow 150ms ease-in-out,
               transform 300ms ease-in-out;
   cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
 
 .productContainer:hover{
   box-shadow: 1px 1px 10px #9F774C88;
-  transform: scale(1.01);
+  transform: scale(1.005);
 }
 
 .title{
@@ -43,7 +45,7 @@
   margin: 0;
 }
 
-.productContainer>h3{
+.subtitle{
   padding: 1rem;
   font-size: 1rem;
   font-weight: normal;
@@ -51,13 +53,15 @@
 }
 
 .imageContainer{
+  width: 100%;
   position: relative;
+  overflow:hidden;
 }
 
 .imageProduct{
-  width: 100%;
-  height: auto;
-  border-radius: 7px;
+  /* width: 110%;
+  height: auto; */
+  border-radius: 10px;
 }
 
 .checkedIcon{
@@ -71,26 +75,63 @@
   border-radius: 50%;
 }
 
+.discountTxt{
+  position: absolute;
+  padding: 5px 10px;
+  right: 15px;
+  bottom: 5px;
+  font-size: .8rem;
+  background-color: rgb(65, 177, 214);
+  border-radius: 3px;
+}
+
+.discountTxt > p{
+  padding: 0;
+  margin: 0;
+  color: #FDEAD0;
+  font-weight: bolder;
+}
+
 .buyContent {
   padding: 0 1rem;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.price {
-  padding: .25rem 0;
-  font-size: 1rem;
-  font-weight:bolder;
+.price,
+.priceRow,
+.finalPrice {
   margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight:lighter;
 }
 
+.priceRow {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+.finalPrice{
+  font-style: italic;
+  font-weight:200;
+}
+
+.discountPrice{
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight:lighter;
+}
 .btn{
   background-color: #DD5A1Add;
   color: #FDEAD0;
   border: none;
   padding: 5px;
+  margin: 5%;
+  width: 90%;
+  height: 2rem;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -105,7 +146,7 @@
     padding: 1rem .5rem;
   }
 
-  .productContainer>h3{
+  .subtitle{
     padding: 1rem .5rem;
     font-size: 1rem;
     font-weight: normal;
@@ -119,7 +160,7 @@
     font-stretch: expanded;
   }
 
-  .productContainer>h3 {
+  .subtitle {
     padding: .25rem 1rem;
     font-size: 1rem;
     font-weight: normal;
