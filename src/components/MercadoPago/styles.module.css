@@ -11,7 +11,30 @@
   line-height: 1.5rem;
 }
 
-.mpbtn{
-  padding: 1rem;
-  width: 200px;
+.btnCheckuot {
+  width: 90%;
+  color: white;
+  background-color: #009EE3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 1.5rem 5% .3rem;
+  padding: .3rem;
+  height: 3rem;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.mpText{
+  width: 90%;
+  font-size: .8rem;
+  color: #333;
+  margin: 0 .5rem;
+  text-align: end;
+}
+
+@media(min-width:768px) {
+  .btnCheckuot {
+    padding: .5rem;
+  }
 }

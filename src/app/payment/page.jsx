@@ -11,8 +11,6 @@ export default function Payment() {
       <h1 className={styles.parrafo}>Métodos de pago</h1>
       <h2 className={styles.subtitulo}> Paypal</h2>
       <Paypal />
-      <h2 className={styles.subtitulo}> Mercadopago</h2>
-      <MercadoPago />
     </div>
   );
 } 

@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useReducer, useState, useEffect} from "react";
-// import { cartActions } from "@/components/CartActios/cartActions";
 import "@/app/globals.css";
 
 export const contexto = createContext();
@@ -8,6 +7,7 @@ export const contexto = createContext();
 export default function RootLayout({ children }) {
   //con el valor devuelto lo cargo en el estado
   const [cartList, setCartList] = useState([]);
+  const [onCheckout, setOnCheckout] = useState(false);
 
   // leo el listado cargado en el local storage
   useEffect(()=> {
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   
   return (
     <div>
-      <contexto.Provider value={{ cartList, setCartList }}>
+      <contexto.Provider value={{ cartList, setCartList , onCheckout, setOnCheckout}}>
         {children}
       </contexto.Provider>
     </div>

@@ -17,7 +17,7 @@ function clearAll() {
   return [];
 }
 
-function subTotal(listado) {
+function subTotalRow(listado) {
   let sumaTotal = 0;
   listado.map((item) => (sumaTotal += Number(item.price)));
   return sumaTotal;
@@ -35,4 +35,4 @@ function totalTaxes(listado) {
   return sumaTotal;
 }
 
-export { clearItem, clearAll, subTotal , discountTotal , totalTaxes };
+export { clearItem, clearAll, subTotalRow , discountTotal , totalTaxes };

@@ -1,20 +1,31 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { MercadoPagoConfig } from "mercadopago";
+import { roundedPrice } from '../Productos/ProductCard/functions'
 import styles from "./styles.module.css";
 
 const cliente = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
 });
 
-export default function MercadoPago() {
+export default function MercadoPago(productList) {
   const [preferenceId, setPreferenceId] = useState(null);
-  const producto = {
-    title: "Notebook",
-    price: 100,
-    quantity: 1,
-  };
+  const [finalList, setFinalList] = useState([]);
+
+  useEffect(() => {
+    const listado = productList.productList.map((el) => {
+      const finalPrice = roundedPrice(el.price*(1-el.discount)*(1+el.taxes));
+      return {
+        id: el.id,
+        title: el.title,
+        price: finalPrice,
+        description: el.description,
+        quantity: 1,
+      };
+    });
+    setFinalList(listado);
+  }, [productList]);
 
   useEffect(() => {
     initMercadoPago(process.env.NEXT_PUBLIC_KEY_MP, { locale: "es-AR" });
@@ -58,17 +69,21 @@ export default function MercadoPago() {
   return (
     <div id="wallet_container" className={styles.mpbtn}>
       {!preferenceId && (
-        <button onClick={() => sendData(producto)}>
-          realizar pago por Mercadopago
-        </button>
+        <>
+          <button
+            onClick={() => sendData(finalList)}
+            className={styles.btnCheckuot}
+          >
+            Realizar Pago Por Mercadopago
+          </button>
+          {/* <p className={styles.mpText}>Por Mercadopago</p> */}
+        </>
       )}
       {preferenceId && (
-        <>
-          <Wallet
-            initialization={{ preferenceId: preferenceId }}
-            customization={customization}
-          />
-        </>
+        <Wallet
+          initialization={{ preferenceId: preferenceId }}
+          customization={customization}
+        />
       )}
     </div>
   );

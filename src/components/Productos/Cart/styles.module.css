@@ -30,19 +30,19 @@
   margin: 1rem 0;
 }
 
-.cartContainer{
+.cartContainer {
   display: flex;
   flex-flow: column nowrap;
 }
 
-.productsContainer{
+.productsContainer {
   max-height: 30vh;
   overflow-y: auto;
 }
 
 
 /* ------------  card  ----------- */
-.card{
+.card {
   width: 100%;
   padding: 2px;
   display: flex;
@@ -51,7 +51,7 @@
   align-items: center;
 }
 
-.imgProduct{
+.imgProduct {
   width: 10%;
   height: auto;
 }
@@ -68,33 +68,33 @@
   font-weight: bolder;
 }
 
-.card > button {
-    margin: .5rem;
-    width: 5%;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+.card>button {
+  margin: .5rem;
+  width: 5%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.card > button * {
+.card>button * {
   font-size: 1.5rem;
   color: black;
 }
 
-.btnClearAll{
-    color: white;
-    background-color: #ec4e70;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: .5rem;
-    padding: .3rem;
-    height: 3rem;
-    font-size: 1rem;
-    font-weight: bolder;
+.btnClearAll {
+  color: white;
+  background-color: #ec4e70;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: .5rem;
+  padding: .3rem;
+  height: 3rem;
+  font-size: 1rem;
+  font-weight: bolder;
 }
 
-.emptyCart{
+.emptyCart {
   color: #333;
   font-size: 1.2rem;
   font-weight: bold;
@@ -106,50 +106,69 @@
 
 .subtotal,
 .total,
-.impuestos{
+.impuestos {
   padding: .7rem .4rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items:baseline;
- }
+  align-items: baseline;
+}
 
- .subtotal > h2{
+.subtotal>h2 {
   margin: 0;
   font-size: 1.4rem;
   font-weight: bolder;
- }
- .subtotal > p{
+}
+
+.subtotal>p {
   margin: 0;
   font-size: 1.2rem;
- }
+}
 
- .impuestos > h2{
+.impuestos>h2 {
   margin: 0;
   font-size: 1.4rem;
   font-weight: bolder;
- }
- .impuestos > p{
+}
+
+.impuestos>p {
   margin: 0;
   font-size: 1.2rem;
   font-style: italic;
- }
+}
 
- .total{
+.total {
   margin: 0;
   background-color: aliceblue;
   border-radius: 10px;
- }
- 
- .total > h2{
+}
+
+.total>h2 {
   margin: 0;
   font-size: 1.6rem;
   font-weight: bolder;
- }
- .total > p{
+}
+
+.total>p {
   margin: 0;
   font-size: 1.4rem;
- }
+}
+
+.paymantMethodContainer{                                                                                                                            
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content:space-between;
+  align-items:center;
+}
+.btnPaymantMethod{
+  color: #eee;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: .5rem;
+  margin: .25rem;
+  width: 45%;
+}
 
 @media(min-width:576px) {
 
@@ -172,20 +191,20 @@
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
-  .cartContainer{
+
+  .cartContainer {
     display: flex;
     flex-flow: column nowrap;
   }
 
-  .productsContainer{
+  .productsContainer {
     max-height: 40vh;
     overflow-y: auto;
   }
-  
-  
+
+
   /* ------------  card  ----------- */
-  .card{
+  .card {
     width: 100%;
     /* margin: .1rem 0; */
     display: flex;
@@ -193,65 +212,66 @@
     justify-content: left;
     align-items: center;
   }
-  
-  .imgProduct{
+
+  .imgProduct {
     width: 10%;
     height: auto;
   }
-  
+
   .title {
     width: 65%;
     padding: 0 .5rem;
   }
-  
-  .price{
+
+  .price {
     width: 25%;
     padding: 0 .5rem;
   }
-  
-  .card > button {
-      margin: 0 .5rem;
-      width: 5%;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
+
+  .card>button {
+    margin: 0 .5rem;
+    width: 5%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
-  
-  .card > button * {
+
+  .card>button * {
     font-size: 1.5rem;
     color: black;
   }
-  
-  .btnClearAll{
-      color: white;
-      background-color: #ec4e70;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 1rem;
-      padding: .5rem;
-      height: 3rem;
-      font-size: 1rem;
-      font-weight: bolder;
+
+  .btnClearAll {
+    width: 90%;
+    color: white;
+    background-color: #ec4e70;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem;
+    padding: .5rem;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: bolder;
   }
 
-  .emptyCart{
+  .emptyCart {
     font-size: 1.3rem;
   }
-  
-  
+
+
   /* ------------  subtotal -impuestos - total  ----------- */
   .subtotal,
   .total,
-  .impuestos{
+  .impuestos {
     padding: 1rem .5rem;
-   }
+  }
 }
 
 @media(min-width:992px) {
-  .productsContainer{
+  .productsContainer {
     max-height: none;
-    overflow-y:hidden;
+    overflow-y: hidden;
   }
 }
 

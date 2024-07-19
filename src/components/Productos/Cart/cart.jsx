@@ -3,58 +3,71 @@ import { useContext, useEffect, useState } from "react";
 import { contexto } from "@/app/(contx_grp)/productos/layout";
 import Image from "next/image";
 
-import { clearItem, clearAll, subTotal , discountTotal , totalTaxes } from "./functions";
+import {
+  clearItem,
+  clearAll,
+  subTotalRow,
+  discountTotal,
+  totalTaxes,
+} from "./functions";
+import { roundedPrice } from "../ProductCard/functions";
 
 import { TbTrashX } from "react-icons/tb";
 import styles from "./styles.module.css";
-import Swal from 'sweetalert2';
+import MercadoPago from "@/components/MercadoPago/MP";
+import Paypal from "@/components/Paypal/paypal";
 
 export default function Cart() {
-  const { cartList, setCartList } = useContext(contexto);
+  const { cartList, setCartList, onCheckout, setOnCheckout } = useContext(contexto);
   const [subtotal, setSubtotal] = useState(0);
   const [discounts, setDiscounts] = useState(0);
   const [taxes, setTaxes] = useState(0);
-  const [total,setTotal] = useState(0);
-  const impuestos = 21;
+  const [total, setTotal] = useState(0);
+  const [mpSelected, setMPselected] = useState(false);
+  const [ppSelected, setPPselected] = useState(false);
+
   //Borro un item de la lista
-  const borrar = (product) => setCartList(clearItem(product, cartList));
+  const borrar = (product) => {
+    if (!mpSelected && !ppSelected) setCartList(clearItem(product, cartList))
+  };
 
   //Borrado de la lista del carro
-  const borrarTodo = () => setCartList(clearAll());
+  const borrarTodo = () => {
+    if (!mpSelected && !ppSelected) setCartList(clearAll())};
 
-  const realizarCompra = () => Swal.fire({
-    icon: "warning",
-    title: "Se va  a concretar la compra!",
-    showClass: {
-      popup: `
-        animate__animated
-        animate__fadeInUp
-        animate__faster
-      `
-    },
-    hideClass: {
-      popup: `
-        animate__animated
-        animate__fadeOutDown
-        animate__faster
-      `
-    }
-  }); ;
+  const selectPP = () => {
+    setMPselected(false);
+    setPPselected(true);
+  };
+  const selectMP = () => {
+    setPPselected(false);
+    setMPselected(true);
+  };
+  const cancelOrder = () => {
+    setPPselected(false);
+    setMPselected(false);
+  };
 
   useEffect(() => {
-    const suma = subTotal(cartList);
+    const suma = roundedPrice(subTotalRow(cartList));
     setSubtotal(suma);
-    const descuentos = discountTotal(cartList);
-    setDiscounts(descuentos)
-    const impuestos = totalTaxes(cartList);
-    setTaxes(impuestos)
+    // const descuentos = roundedPrice(discountTotal(cartList));
+    const descuentos = roundedPrice(discountTotal(cartList));
+    setDiscounts(descuentos);
+    const impuestos = roundedPrice(totalTaxes(cartList));
+    setTaxes(impuestos);
+    const totalPrice = roundedPrice(subtotal + taxes - discounts);
+    setTotal(totalPrice);
+  }, [cartList, discounts, taxes, total , subtotal]);
 
-    setTotal(suma + impuestos - descuentos);
-  }, [cartList,discounts, impuestos]);
+  useEffect(() => {
+    if(!mpSelected && !ppSelected) setOnCheckout(false);
+    else setOnCheckout(true)
+   },[mpSelected , ppSelected , setOnCheckout])
 
   return (
     <article className={styles.mainCart}>
-      <h1 style={{fontWeight:'bolder'}}>Carro de compras</h1 >
+      <h1 style={{ fontWeight: "bolder" }}>Carro de compras</h1>
 
       {cartList.length !== 0 && (
         <>
@@ -68,6 +81,7 @@ export default function Cart() {
                     height={40}
                     alt="imagen del producto"
                     className={styles.imgProduct}
+                    priority={true}
                   />
                   <p className={styles.title}> {product.title} </p>
                   <p className={styles.price}> $ {product.price} </p>
@@ -88,7 +102,7 @@ export default function Cart() {
             </div>
             <div className={styles.subtotal}>
               <h2>Descuentos</h2>
-              <p> $ {discounts}</p>
+              <p> - $ {discounts}</p>
             </div>
             <div className={styles.impuestos}>
               <h2>Impuestos</h2>
@@ -99,14 +113,45 @@ export default function Cart() {
               <p> $ {total}</p>
             </div>
 
-            <button
-              className={styles.btnClearAll}
-              style={{ backgroundColor: "#794dff" }}
-              onClick={realizarCompra}
-            >
-              {" "}
-              Realizar compra{" "}
-            </button>
+            <div className={styles.subtotal}>
+              <h2>Elejí el medio de pago</h2>
+            </div>
+            {!ppSelected && !mpSelected && (
+              <div className={styles.paymantMethodContainer}>
+                <button
+                  onClick={() => selectPP()}
+                  className={styles.btnPaymantMethod}
+                  style={{ backgroundColor: "#2C2E2F" }}
+                >
+                  Paypal
+                </button>
+                <button
+                  onClick={() => selectMP()}
+                  className={styles.btnPaymantMethod}
+                  style={{ backgroundColor: "#009EE3" }}
+                >
+                  Mercadopago
+                </button>
+              </div>
+            )}
+            {mpSelected && (
+              <>
+                <MercadoPago productList={cartList} />
+              </>
+            )}
+            {ppSelected && (
+              <>
+                <Paypal productList={cartList} />
+              </>
+            )}
+            {(mpSelected || ppSelected) && (
+              <button
+                onClick={() => cancelOrder()}
+                className={styles.btnClearAll}
+              >
+                Cancelar orden
+              </button>
+            )}
           </div>
         </>
       )}

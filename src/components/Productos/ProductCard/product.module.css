@@ -59,10 +59,14 @@
 }
 
 .imageProduct{
-  /* width: 110%;
-  height: auto; */
   border-radius: 10px;
 }
+
+.imagewidthoutProduct{
+  border-radius: 10px;
+  opacity: .5;
+}
+
 
 .checkedIcon{
   position: absolute;
@@ -75,7 +79,8 @@
   border-radius: 50%;
 }
 
-.discountTxt{
+.discountTxt,
+.withoutTxt{
   position: absolute;
   padding: 5px 10px;
   right: 15px;
@@ -85,12 +90,30 @@
   border-radius: 3px;
 }
 
-.discountTxt > p{
+.discountTxt > p,
+.withoutTxt > p{
   padding: 0;
   margin: 0;
-  color: #FDEAD0;
+  color: #eee;
   font-weight: bolder;
 }
+
+.withoutTxt{
+  padding: 0.2rem;
+  text-align: center;
+  width: 150px;
+  height: 1.5rem;
+  left: 15px;
+  top: 190px;
+  background-color: rgb(255, 98, 25);
+  z-index:100;
+  transform-origin: 0 0;
+  transform: rotate(-45deg) ;
+}
+.withoutTxt > p{
+  color: #ffbbab;
+}
+
 
 .buyContent {
   padding: 0 1rem;
@@ -124,7 +147,8 @@
   font-size: 2rem;
   font-weight:lighter;
 }
-.btn{
+.btn,
+.btnWithoutStock{
   background-color: #DD5A1Add;
   color: #FDEAD0;
   border: none;
@@ -134,6 +158,10 @@
   height: 2rem;
   border-radius: 5px;
   cursor: pointer;
+}
+.btnWithoutStock{
+  background-color: #888d;
+  cursor:none;
 }
 
 @media(min-width:576px) {

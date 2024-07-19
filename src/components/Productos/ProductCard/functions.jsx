@@ -15,4 +15,9 @@ function addItem(item, productList) {
     return new_List;
   }
 
-export { addItem , clearItem }
+  function roundedPrice( price ){
+    const price2decimal = Math.round(price*100)/100
+    return price2decimal
+  }
+
+export { addItem , clearItem , roundedPrice}

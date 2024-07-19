@@ -20,6 +20,7 @@ export default function Products() {
   const { cartList, setCartList } = useContext(contexto);
   const [style01, setStyle01] = useState(hiddenCart);
   const [styleBTN, setStyleBTN] = useState(showIconCart);
+  const [genre, setGenre] = useState("");
 
   const openCart2 = () => {
     setStyle01(showCart);
@@ -33,7 +34,7 @@ export default function Products() {
 
   return (
     <>
-      <div style={{position:'relative'}}>
+      <div style={{ position: "relative" }}>
         <button
           onClick={() => openCart2()}
           className={styles.btnOpenCart}
@@ -45,18 +46,42 @@ export default function Products() {
           )}
         </button>
       </div>
+
       <main className={styles.mainOurServices}>
-        <h1 className={styles.mainOurServicesTitle}>Nuestros Productos</h1>
+        <div style={{ display: "flex" }}>
+          <h1 className={styles.mainOurServicesTitle}>Nuestros Productos</h1>
+          <select
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+            style={{
+              marginRight: "15%",
+              height: "2rem",
+              marginTop: "2rem",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+              backgroundColor: "#f802",
+            }}
+          >
+            <option value="">Todos</option>
+            <option value="woman">Mujeres</option>
+            <option value="child">Niños</option>
+            <option value="man">Hombres</option>
+            <option value="gift">Regalos</option>
+          </select>
+        </div>
         <article>
           <section className={styles.productsContainer}>
-            {productos.map((item) => (
-              <Producto
-                product={item}
-                key={item.id}
-                list={cartList}
-                setList={setCartList}
-              />
-            ))}
+            {productos.map(
+              (item) =>
+                (item.genre == genre || genre == "") && (
+                  <Producto
+                    product={item}
+                    key={item.id}
+                    list={cartList}
+                    setList={setCartList}
+                  />
+                )
+            )}
           </section>
 
           <section className={styles.cartContainer} style={style01}>
