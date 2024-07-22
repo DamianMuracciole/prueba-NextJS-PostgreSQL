@@ -1,6 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { contexto } from "@/app/(contx_grp)/productos/layout";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import {
@@ -16,9 +17,11 @@ import { TbTrashX } from "react-icons/tb";
 import styles from "./styles.module.css";
 import MercadoPago from "@/components/MercadoPago/MP";
 import Paypal from "@/components/Paypal/paypal";
+import Swal from "sweetalert2";
 
-export default function Cart() {
-  const { cartList, setCartList, onCheckout, setOnCheckout } = useContext(contexto);
+export default function Cart({ mercadoParams }) {
+  const { cartList, setCartList, onCheckout, setOnCheckout } =
+    useContext(contexto);
   const [subtotal, setSubtotal] = useState(0);
   const [discounts, setDiscounts] = useState(0);
   const [taxes, setTaxes] = useState(0);
@@ -28,12 +31,13 @@ export default function Cart() {
 
   //Borro un item de la lista
   const borrar = (product) => {
-    if (!mpSelected && !ppSelected) setCartList(clearItem(product, cartList))
+    if (!mpSelected && !ppSelected) setCartList(clearItem(product, cartList));
   };
 
   //Borrado de la lista del carro
   const borrarTodo = () => {
-    if (!mpSelected && !ppSelected) setCartList(clearAll())};
+    setCartList(clearAll());
+  };
 
   const selectPP = () => {
     setMPselected(false);
@@ -48,6 +52,14 @@ export default function Cart() {
     setMPselected(false);
   };
 
+  const errForSale = () =>
+    Swal.fire({
+      title: "Primero debés cancelar la orden",
+      icon: "warning",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
   useEffect(() => {
     const suma = roundedPrice(subTotalRow(cartList));
     setSubtotal(suma);
@@ -58,12 +70,23 @@ export default function Cart() {
     setTaxes(impuestos);
     const totalPrice = roundedPrice(subtotal + taxes - discounts);
     setTotal(totalPrice);
-  }, [cartList, discounts, taxes, total , subtotal]);
+  }, [cartList, discounts, taxes, total, subtotal]);
 
   useEffect(() => {
-    if(!mpSelected && !ppSelected) setOnCheckout(false);
-    else setOnCheckout(true)
-   },[mpSelected , ppSelected , setOnCheckout])
+    if (!mpSelected && !ppSelected) setOnCheckout(false);
+    else setOnCheckout(true);
+  }, [mpSelected, ppSelected, setOnCheckout]);
+
+  console.log(mercadoParams)
+  if (
+    mercadoParams.collection_status === "approved" &&
+    mercadoParams.collection_id != null &&
+    mercadoParams.statusMP === "approved"
+  ) {
+    cancelOrder();
+    borrarTodo();
+    redirect("/productos");
+  }
 
   return (
     <article className={styles.mainCart}>
@@ -91,11 +114,24 @@ export default function Cart() {
                 </div>
               ))}
             </div>
+            {!ppSelected && !mpSelected && (
+              <button
+                className={styles.btnClearAll}
+                onClick={() => borrarTodo()}
+              >
+                Borrar todo
+              </button>
+            )}
+            {(ppSelected || mpSelected) && (
+              <button
+                className={styles.btnClearAll}
+                style={{ backgroundColor: "#666" }}
+                onClick={() => errForSale()}
+              >
+                Borrar todo
+              </button>
+            )}
 
-            <button className={styles.btnClearAll} onClick={() => borrarTodo()}>
-              {" "}
-              Borrar todo{" "}
-            </button>
             <div className={styles.subtotal}>
               <h2>Subtotal</h2>
               <p> $ {subtotal}</p>
@@ -136,12 +172,20 @@ export default function Cart() {
             )}
             {mpSelected && (
               <>
-                <MercadoPago productList={cartList} />
+                <MercadoPago
+                  productList={cartList}
+                  cancelOrder={cancelOrder}
+                  borrarTodo={borrarTodo}
+                />
               </>
             )}
             {ppSelected && (
               <>
-                <Paypal productList={cartList} />
+                <Paypal
+                  productList={cartList}
+                  cancelOrder={cancelOrder}
+                  borrarTodo={borrarTodo}
+                />
               </>
             )}
             {(mpSelected || ppSelected) && (

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from 'next/navigation'
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { MercadoPagoConfig } from "mercadopago";
 import { roundedPrice } from '../Productos/ProductCard/functions'
@@ -9,12 +10,16 @@ const cliente = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
 });
 
-export default function MercadoPago(productList) {
+
+
+export default function MercadoPago({productList}) {
   const [preferenceId, setPreferenceId] = useState(null);
   const [finalList, setFinalList] = useState([]);
+  
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const listado = productList.productList.map((el) => {
+    const listado = productList.map((el) => {
       const finalPrice = roundedPrice(el.price*(1-el.discount)*(1+el.taxes));
       return {
         id: el.id,
@@ -65,6 +70,11 @@ export default function MercadoPago(productList) {
       console.log("hay errores: =>  ", error);
     }
   };
+
+  // if (  collection_status === 'approved' && collection_id && status === 'approved'){
+  //   cancelOrder();
+  //   borrarTodo()
+  // }
 
   return (
     <div id="wallet_container" className={styles.mpbtn}>

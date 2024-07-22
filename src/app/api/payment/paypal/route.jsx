@@ -14,7 +14,7 @@ const client = new paypal.core.PayPalHttpClient(environment);
 export async function POST(req) {
   try {
     const lista = await req.json();
-    console.log('el request de datas: ==> ',lista);
+    // console.log('el request de datas: ==> ',lista);
     const request = new paypal.orders.OrdersCreateRequest();
     request.requestBody({
       intent: 'CAPTURE',
@@ -22,7 +22,7 @@ export async function POST(req) {
     })
 
     const response = await client.execute(request);
-    console.log(response);
+    // console.log(response);
     return NextResponse.json({
       id: response.result.id
     })
@@ -40,60 +40,4 @@ export async function POST(req) {
       }
     );
   }
-  const request = new paypal.orders.OrdersCreateRequest();
-  request.requestBody({
-    intent: "CAPTURE",
-    purchase_units: [
-      {
-        description: "Mobile World Store order-1234",
-        amount: {
-          currency_code: "USD",
-          value: 0.23,
-          breakdown: {
-            item_total: {
-              currency_code: "USD",
-              value: "0.23",
-            },
-          },
-        },
-        items: [
-          {
-            name: "NeoPhone",
-            description: "sku03",
-            quantity: "1",
-            unit_amount: {
-              currency_code: "USD",
-              value: "0.10",
-            },
-          },
-          {
-            name: "Fitness Watch",
-            description: "sku04",
-            quantity: "1",
-            unit_amount: {
-              currency_code: "USD",
-              value: "0.13",
-            },
-          },
-        ],
-      },
-    ],
-    // purchase_units: [
-    //   {
-    //     amount: {
-    //       currency_code: "USD",
-    //       value: "0.10",
-    //     },
-    //     description: "lalalalalallala",
-    //   },
-    // ],
-  });
-
-  const response = await client.execute(request);
-  console.log(response);
-
-  return NextResponse.json({
-    id: response.result.id,
-    message: "Procesando pago ...",
-  });
 }

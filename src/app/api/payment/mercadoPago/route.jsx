@@ -40,15 +40,15 @@ export async function POST(req) {
       //   },
       // ],
       back_urls: {
-        success: "https://fullstackopen.com/es/",
-        failure: "https://community.listopro.com/",
-        pending: "https://www.cuevana2espanol.net/",
+        success: `${process.env.URL_TUNNEL}`+'/productos',
+        failure: `${process.env.URL_TUNNEL}`,
+        pending: `${process.env.URL_TUNNEL}`,
       },
       auto_return: "approved",
     };
     const preference = new Preference(client);
     const result = await preference.create({ body });
-    console.log("resultado de crear la preferencia ==> ", result);
+    // console.log("resultado de crear la preferencia ==> ", result);
 
     //respuesta al front
     return NextResponse.json({ id: result.id });

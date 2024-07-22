@@ -43,8 +43,6 @@ export default function UserRegister() {
     if (res.ok){
       router.push('/auth/login')
     }
-
-  
     const resJSON = await res.json();
     console.log('resJSON del register: ',resJSON)
 

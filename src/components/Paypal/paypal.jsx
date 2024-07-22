@@ -2,34 +2,14 @@
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { dataObjectForPaypal } from './functions'
+import Swal from "sweetalert2";
 import styles from "@/components/Paypal/styles.module.css";
 
 
 const client_ID = process.env.NEXT_PUBLIC_PP_Client_ID;
-export default function Paypal(productList) {
+export default function Paypal({ productList , cancelOrder , borrarTodo}) {
   const data = dataObjectForPaypal(productList);
-  console.log('data: ==>>    ',data.data)
-
-  const datas = [
-    {
-      name: "pantalon",
-      description: "pantalon de ejercicio",
-      quantity: "1",
-      unit_amount: {
-        currency_code: 'USD',
-        value: '0.25'
-      }
-    },
-    {
-      name: "remera",
-      description: "remera de poliester",
-      quantity: "1",
-      unit_amount: {
-        currency_code: 'USD',
-        value: '0.15'
-      }
-    },
-  ]
+  // console.log('data: ==>>    ',data.data)
 
   return (
     <PayPalScriptProvider options={{ clientId: client_ID }}>
@@ -50,15 +30,29 @@ export default function Paypal(productList) {
             },
           })
           const order = await res.json();
-          console.log(order)
           return order.id
+        }}
+        onApprove={(data,actions)=> {
+          actions.order.capture();
+          Swal.fire({
+            title: "Se ha concretado el pago el pago",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+          cancelOrder();
+          borrarTodo();
+        }}
+        onCancel={(data)=> {
+          Swal.fire({
+            title: "Se ha cancelado el pago",
+            icon: "info",
+            timer: 1500,
+            showConfirmButton: false,
+          });
         }}
         className={styles.paypalbtn}
         />
     </PayPalScriptProvider>
   );
 }
-
-
-// onCancel={() => {}}
-// onApprove={() => {}}

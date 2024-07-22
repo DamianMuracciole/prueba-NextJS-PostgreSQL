@@ -100,11 +100,7 @@ export default function Product({ product, list, setList }) {
               <span style={{fontSize:'10px', textAlign:'end'}}>+ Impuestos</span>
             </div>
           )}
-
-          {/* <p className={styles.price} style={{ color: "tomato" }}>
-            {" "}
-            -{product.discount * 100}%
-          </p> */}
+          
         </div>
         <div>
           {!selected && product.stock !== 0 && (

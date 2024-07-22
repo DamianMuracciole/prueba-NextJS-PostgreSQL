@@ -26,7 +26,7 @@ export default function UserLogin() {
       redirect: false
     }) 
 
-    console.log('Respuesta: ',response)
+    // console.log('Respuesta: ',response)
 
     if(response.error){
       //alert(response.error) 

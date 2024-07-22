@@ -1,5 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { contexto } from "@/app/(contx_grp)/productos/layout";
 
 import { productos } from "@/components/Productos/listadoProductos";
@@ -22,10 +23,27 @@ export default function Products() {
   const [styleBTN, setStyleBTN] = useState(showIconCart);
   const [genre, setGenre] = useState("");
 
-  const openCart2 = () => {
+  // Algunos parámetros enviados por MercadpPago cuando se realiza una transaccion
+  // collection_id=83320463906
+  // collection_status=approved
+  // payment_id=83320463906
+  // status=approved
+  // external_reference=null
+  // payment_type=account_money
+  // merchant_order_id=20978001763
+  // preference_id=1879176555-beb822ea-6f51-48e2-9191-d130da50939e
+  // site_id=MLA&&processing_mode=aggregator
+  // merchant_account_id=null
+  const searchParams = useSearchParams();
+  const collection_status = searchParams.get("collection_status");
+  const collection_id = searchParams.get("collection_id");
+  const statusMP = searchParams.get("status");
+  const mercadoParams = { collection_status, collection_id,statusMP }
+  
+  function openCart2() {
     setStyle01(showCart);
     setStyleBTN(hiddenIconCart);
-  };
+  }
 
   const closeCart2 = () => {
     setStyle01(hiddenCart);
@@ -85,7 +103,7 @@ export default function Products() {
           </section>
 
           <section className={styles.cartContainer} style={style01}>
-            <Cart />
+            <Cart mercadoParams={mercadoParams}/>
             <button
               onClick={() => closeCart2()}
               className={styles.btnCloseCart}

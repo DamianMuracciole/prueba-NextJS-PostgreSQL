@@ -38,7 +38,7 @@ export default function UserRegister() {
       body: formData
     })
     const resJSON = await res.json();
-    console.log('resJSON products: ',resJSON)
+    // console.log('resJSON products: ',resJSON)
 
     Swal.fire({
       title: 'Has ingresado un nuevo producto',

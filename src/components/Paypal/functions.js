@@ -4,8 +4,8 @@ function dataObjectForPaypal(productList) {
 
   const totalityPrice = () => {
     let totalPrice = 0;
-    for (let i = 0; i < productList.productList.length; i++) {
-      totalPrice += roundedPrice(productList.productList[i].price * (1 - productList.productList[i].discount) * (1 + productList.productList[i].taxes))
+    for (let i = 0; i < productList.length; i++) {
+      totalPrice += roundedPrice(productList[i].price * (1 - productList[i].discount) * (1 + productList[i].taxes))
     }
     return {
       currency_code: "USD",
@@ -18,7 +18,7 @@ function dataObjectForPaypal(productList) {
       },
     }
   }
-  const items = productList.productList.map(item => {
+  const items = productList.map(item => {
     return {
       name: item.title,
       description: item.description,

@@ -58,13 +58,13 @@ export async function PUT(request, { params }) {
       urlImage: urlImage
     }
 
-    console.log('dataToDB: ', dataToDB)
+    // console.log('dataToDB: ', dataToDB)
     //Copio en la DB
     const result = await prisma.products.update({
       where: { id: id },
       data: dataToDB,
     })
-    console.log('result: ', result)
+    // console.log('result: ', result)
     if (!result) {
       //si no consigo una respuesta de la DB
       return NextResponse.json(`Producto ${id} no encontrado`, { status: 404 })
@@ -93,7 +93,7 @@ export async function DELETE(request, { params }) {
     const result = await prisma.products.delete({
       where: { id: id },
     })
-    console.log('Usuario borrado', result);
+    // console.log('Usuario borrado', result);
     return NextResponse.json({ nessage: result }, { status: 200 })
   } catch (error) {
     return new NextResponse.json(error.message, { status: 500 })
