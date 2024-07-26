@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 import { contexto } from "@/app/(contx_grp)/productos/layout";
 import { redirect } from "next/navigation";
 import Image from "next/image";
@@ -77,7 +77,7 @@ export default function Cart({ mercadoParams }) {
     else setOnCheckout(true);
   }, [mpSelected, ppSelected, setOnCheckout]);
 
-  console.log(mercadoParams)
+  // console.log(mercadoParams)
   if (
     mercadoParams.collection_status === "approved" &&
     mercadoParams.collection_id != null &&
@@ -171,22 +171,16 @@ export default function Cart({ mercadoParams }) {
               </div>
             )}
             {mpSelected && (
-              <>
-                <MercadoPago
-                  productList={cartList}
-                  cancelOrder={cancelOrder}
-                  borrarTodo={borrarTodo}
-                />
-              </>
+              <MercadoPago
+                productList={cartList}
+              />
             )}
             {ppSelected && (
-              <>
-                <Paypal
-                  productList={cartList}
-                  cancelOrder={cancelOrder}
-                  borrarTodo={borrarTodo}
-                />
-              </>
+              <Paypal
+                productList={cartList}
+                cancelOrder={cancelOrder}
+                borrarTodo={borrarTodo}
+              />
             )}
             {(mpSelected || ppSelected) && (
               <button

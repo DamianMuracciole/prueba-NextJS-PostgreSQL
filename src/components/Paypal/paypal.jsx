@@ -9,7 +9,6 @@ import styles from "@/components/Paypal/styles.module.css";
 const client_ID = process.env.NEXT_PUBLIC_PP_Client_ID;
 export default function Paypal({ productList , cancelOrder , borrarTodo}) {
   const data = dataObjectForPaypal(productList);
-  // console.log('data: ==>>    ',data.data)
 
   return (
     <PayPalScriptProvider options={{ clientId: client_ID }}>

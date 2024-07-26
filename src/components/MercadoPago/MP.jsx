@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, Suspense } from "react";
-import { useSearchParams } from 'next/navigation'
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { MercadoPagoConfig } from "mercadopago";
 import { roundedPrice } from '../Productos/ProductCard/functions'
@@ -10,13 +9,9 @@ const cliente = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
 });
 
-
-
 export default function MercadoPago({productList}) {
   const [preferenceId, setPreferenceId] = useState(null);
   const [finalList, setFinalList] = useState([]);
-  
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     const listado = productList.map((el) => {
@@ -71,11 +66,6 @@ export default function MercadoPago({productList}) {
     }
   };
 
-  // if (  collection_status === 'approved' && collection_id && status === 'approved'){
-  //   cancelOrder();
-  //   borrarTodo()
-  // }
-
   return (
     <div id="wallet_container" className={styles.mpbtn}>
       {!preferenceId && (
@@ -90,10 +80,10 @@ export default function MercadoPago({productList}) {
         </>
       )}
       {preferenceId && (
-        <Wallet
-          initialization={{ preferenceId: preferenceId }}
-          customization={customization}
-        />
+          <Wallet
+            initialization={{ preferenceId: preferenceId }}
+            customization={customization}
+          />
       )}
     </div>
   );

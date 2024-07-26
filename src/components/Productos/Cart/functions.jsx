@@ -4,7 +4,7 @@ function clearItem(item, productList) {
   new_List = productList.find((value) => value.id == item.id)
     ? productList.filter((e) => e.id != item.id)
     : productList;
-  // carga el localSorage
+  // carga el localStorage
   localStorage.setItem("listado", JSON.stringify(new_List));
   // devuelve el nuevo listado
   return new_List;
