@@ -1,9 +1,16 @@
 "use client";
 import { useState } from "react";
+import { ABeeZee } from "next/font/google";
 import Modal from "react-bootstrap/Modal";
 import Image from "next/image";
 import styles from "./product.module.css";
 import { roundedPrice } from "./functions";
+
+const mainFont = ABeeZee({
+  weight: ["400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
 
 function ModalProduct({ data1, children }) {
   const data = data1;
@@ -17,6 +24,7 @@ function ModalProduct({ data1, children }) {
       <button
         onClick={handleOpen}
         style={{ border: "none", borderRadius: "10px" }}
+        className={mainFont.className}
       >
         {children}
       </button>
@@ -136,7 +144,10 @@ function ModalProduct({ data1, children }) {
                     fontSize: "1.2rem",
                   }}
                 >
-                  ${roundedPrice(data.price*(1-data.discount)*(1+data.taxes))}
+                  $
+                  {roundedPrice(
+                    data.price * (1 - data.discount) * (1 + data.taxes)
+                  )}
                 </p>
               </div>
             </div>

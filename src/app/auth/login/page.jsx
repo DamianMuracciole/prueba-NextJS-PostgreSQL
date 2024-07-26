@@ -62,6 +62,8 @@ export default function UserLogin() {
             }
           )}
           placeholder='user@mail.com'
+          autocomplete="off"
+          id="email"
         />
         {errors.email && <p>{errors.email.message}</p>}
 
@@ -75,7 +77,9 @@ export default function UserLogin() {
               }
             }
           )}
+          id="password"
           placeholder='*****'
+          autocomplete="off"
         />
         {errors.password && <p>{errors.password.message}</p>}
 

@@ -8,7 +8,7 @@ CREATE TABLE "Users" (
     "company" VARCHAR(45) NOT NULL,
     "password" VARCHAR(200) NOT NULL,
     "avatar" VARCHAR(200) NOT NULL,
-    "newsletter" BOOLEAN NOT NULL,
+    "Newsletter" BOOLEAN NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
 

@@ -8,9 +8,8 @@ import { addItem, clearItem, roundedPrice } from "./functions";
 import { BsCheck2Circle } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.css";
 import styles from "./product.module.css";
-
 import Swal from "sweetalert2";
-
+// import ModalProduct from "./modalProduct";
 import ModalProduct from "./modalProduct";
 
 export default function Product({ product, list, setList }) {

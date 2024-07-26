@@ -9,11 +9,11 @@ export async function POST(request) {
     // guardo la data que vine del formulario
     const data = await request.formData();
     const image = data.get('avatar');
-
+    
     //tratado de la imagen
     let urlAvatar = 0
     if (image === 'undefined')
-      urlAvatar = '/images/users/avatar.jpg  ';
+      urlAvatar = '/images/users/avatar.jpg';
     else {
       const extension = image.name.split('.');
       const nombreImagen = new Date().getTime().toString() + '.' + extension[extension.length - 1];
@@ -28,7 +28,8 @@ export async function POST(request) {
     
     //hasheo del password
     const password = await bcrypt.hash(data.get('password'),10);
-
+    
+    
     //Genero el objeto para la DB
     const dataToDB = {
       firstname: data.get('firstname'),
@@ -37,10 +38,11 @@ export async function POST(request) {
       email: data.get('email'),
       company: data.get('company'),
       password: password,
-      newsletter: data.get('newsletter') === "true" ? true : false,
+      Newsletter: data.get('newsletter') === "true" ? true : false,
       avatar: urlAvatar
     }
-
+    
+    console.log(dataToDB)
     //Evalúo si se escuentra un email repetido
     const emailFound = await prisma.users.findUnique({
       where: {
@@ -57,10 +59,11 @@ export async function POST(request) {
         }
       )
     }
-
+    
 
     //Copio en la DB
     const newUser = await prisma.users.create(({ data: dataToDB }));
+    console.log(newUser)
     //Muestro por consola algunos valores
     const { password: _, ...newUserToConsole } = newUser
     return NextResponse.json(newUserToConsole);

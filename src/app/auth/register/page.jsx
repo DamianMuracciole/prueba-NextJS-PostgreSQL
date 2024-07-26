@@ -161,6 +161,7 @@ export default function UserRegister() {
             }
           )}
           placeholder='*****'
+          autoComplete="off"
         />
         {errors.password && <p>{errors.password.message}</p>}
 
@@ -180,12 +181,13 @@ export default function UserRegister() {
             }
           )}
           placeholder='*****'
+          autoComplete="off"
         />
         {errors.repassword && <p>{errors.repassword.message}</p>}
 
         <label htmlFor='urlImage' >Avatar</label>
         <Image
-          src={file ? URL.createObjectURL(file) : '/images/avatar.jpg'}
+          src={file ? URL.createObjectURL(file) : '/images/users/avatar.jpg'}
           width={180}
           height={180}
           alt='avatar'

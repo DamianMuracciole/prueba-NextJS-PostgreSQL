@@ -320,7 +320,7 @@ export default function UserRegister() {
                 </>
               }
 
-              {editUser &&
+              {/* {editUser &&
                 <div>
                   <input type="checkbox" {...register("newsletter")} />
                   <label
@@ -328,7 +328,7 @@ export default function UserRegister() {
                   // checked={user.newsletter}
                   > Desea suscribirse a nuestros Newsletters</label>
                 </div>
-              }
+              } */}
 
               {!editUser &&
                 <>

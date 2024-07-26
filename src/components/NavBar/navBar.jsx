@@ -40,11 +40,6 @@ export default async function NavBar() {
               Productos
             </Link>
           </li>
-          <li>
-            <Link href="/payment" className={styles.link}>
-              Pagos
-            </Link>
-          </li>
           {session && session.user ? (
             <>
               <li>

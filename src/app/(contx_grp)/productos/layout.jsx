@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useReducer, useState, useEffect} from "react";
+import { createContext, useState, useEffect} from "react";
 import "@/app/globals.css";
 
 export const contexto = createContext();
