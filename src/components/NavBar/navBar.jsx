@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Logout from "@/components/logout";
 import styles from "@/components/NavBar/navBar.module.css";
+import estilos from "./styles.module.css"
+
 
 export default async function NavBar() {
   const logoSize = 24;
@@ -12,7 +14,7 @@ export default async function NavBar() {
   if (session && session.user) urlImage = session.user.image;
 
   return (
-    <nav className={styles.container}>
+    <nav className={styles.container} >
       <div>
         <Link href="/" className={styles.link} style={{display:'flex', justifyContent:'center'}}>
           <Image
@@ -29,7 +31,7 @@ export default async function NavBar() {
         </Link>
       </div>
       <div>
-        <ul>
+        <ul className={estilos.SMN_effect}>
           <li>
             <Link href="/about" className={styles.link}>
               About

@@ -5,14 +5,14 @@ function clearItem(item, productList) {
     ? productList.filter((e) => e.id != item.id)
     : productList;
   // carga el localStorage
-  localStorage.setItem("listado", JSON.stringify(new_List));
+  localStorage.setItem("listadoOtonio1568", JSON.stringify(new_List));
   // devuelve el nuevo listado
   return new_List;
 }
 
 function clearAll() {
   //borro el localStorage
-  localStorage.setItem("listado", JSON.stringify([]));
+  localStorage.setItem("listadoOtonio1568", JSON.stringify([]));
   //Borro el estado
   return [];
 }

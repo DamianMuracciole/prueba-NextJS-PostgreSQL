@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
 
   // leo el listado cargado en el local storage
   useEffect(()=> {
-    const localSTG = JSON.parse(localStorage.getItem("listado")) ?? [];
+    const localSTG = JSON.parse(localStorage.getItem("listadoOtonio1568")) ?? [];
     setCartList(localSTG)
   },[])
   

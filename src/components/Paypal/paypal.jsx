@@ -34,7 +34,7 @@ export default function Paypal({ productList , cancelOrder , borrarTodo}) {
         onApprove={(data,actions)=> {
           actions.order.capture();
           Swal.fire({
-            title: "Se ha concretado el pago el pago",
+            title: "Se ha concretado el pago satisfactoriamente",
             icon: "success",
             timer: 1500,
             showConfirmButton: false,

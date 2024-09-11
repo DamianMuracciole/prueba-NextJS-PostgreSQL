@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { MercadoPagoConfig } from "mercadopago";
 import { roundedPrice } from '../Productos/ProductCard/functions'

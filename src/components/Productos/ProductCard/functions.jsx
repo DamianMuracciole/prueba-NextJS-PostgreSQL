@@ -2,7 +2,7 @@ function addItem(item, productList) {
     if (productList.find((value) => value.id == item.id) == undefined)
       productList.push(item);
     const newArray = productList.filter((e) => e.id != 0);
-    localStorage.setItem("listado", JSON.stringify(productList));
+    localStorage.setItem("listadoOtonio1568", JSON.stringify(productList));
     return newArray;
   }
   
@@ -11,7 +11,7 @@ function addItem(item, productList) {
     new_List = productList.find((value) => value.id == item.id)
       ? productList.filter((e) => e.id != item.id)
       : productList;
-    localStorage.setItem("listado", JSON.stringify(new_List));
+    localStorage.setItem("listadoOtonio1568", JSON.stringify(new_List));
     return new_List;
   }
 

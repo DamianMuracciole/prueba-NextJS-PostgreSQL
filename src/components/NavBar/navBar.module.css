@@ -35,19 +35,19 @@
   margin: 0 .5rem;
 }
 
-.logoUser{
+.logoUser > a{
   height: 1rem;
   margin: 0;
   padding: 0;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
 }
 
-.logoUser>span{
+.logoUser span{
   padding-left: .5rem;
-  color: #54167d;
+  color: #4A2423;
 }
 
 .logout{
@@ -55,6 +55,6 @@
   border-radius: 0;
   background-color: transparent;
   font: inherit;
-  color: #54167d;
+  color: #4A2423;
   cursor: pointer;
 }

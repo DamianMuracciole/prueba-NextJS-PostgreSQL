@@ -20,8 +20,7 @@ import Paypal from "@/components/Paypal/paypal";
 import Swal from "sweetalert2";
 
 export default function Cart({ mercadoParams }) {
-  const { cartList, setCartList, onCheckout, setOnCheckout } =
-    useContext(contexto);
+  const { cartList, setCartList, onCheckout, setOnCheckout } = useContext(contexto);
   const [subtotal, setSubtotal] = useState(0);
   const [discounts, setDiscounts] = useState(0);
   const [taxes, setTaxes] = useState(0);
@@ -84,7 +83,6 @@ export default function Cart({ mercadoParams }) {
     mercadoParams.statusMP === "approved"
   ) {
     cancelOrder();
-    borrarTodo();
     redirect("/productos");
   }
 

@@ -81,7 +81,7 @@
 }
 
 .btnCloseCart * {
-  background-color: transparent;
+  /* background-color: transparent; */
   font-size: 2rem;
   color: #080a;
 }
@@ -141,7 +141,7 @@
 @media(min-width:768px) {
 
   .cartContainer{
-    width: 50%;
+    width: 45%;
     max-width: 380px;
     margin-right: 1rem;
     display: flex;

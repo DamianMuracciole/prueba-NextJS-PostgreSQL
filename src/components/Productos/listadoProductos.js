@@ -23,7 +23,7 @@ const productos = [
     taxes: 0.105,
     discount: 0.0,
     maxBuyQty: 2,
-    stock: 5,
+    stock: 0,
   },
   {
     id: 3,
